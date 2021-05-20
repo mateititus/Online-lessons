@@ -49,22 +49,20 @@ import { LessonDetailsComponent } from './lesson/lessonDetails.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'students', component: StudentsComponent },
-      { path: 'studentAdd', component: StudentAddComponent },
-      { path: 'studentEdit/:id', component: StudentEditComponent },
-      { path: 'studentDetails/:id', component: StudentDetailsComponent },
-
-      { path: 'teachers', component: TeachersComponent },
-      { path: 'teacherAdd', component: TeacherAddComponent },
-      { path: 'teacherEdit/:id', component: TeacherEditComponent },
-      { path: 'teacherDetails/:id', component: TeacherDetailsComponent },
-
-      { path: 'lessons', component: LessonsComponent },
-      { path: 'lessonAdd', component: LessonAddComponent },
-      { path: 'lessonEdit/:id', component: LessonEditComponent },
-      { path: 'lessonDetails/:id', component: LessonDetailsComponent },
-    ])
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'students', component: StudentsComponent },
+    { path: 'studentAdd', component: StudentAddComponent },
+    { path: 'studentEdit/:id', component: StudentEditComponent },
+    { path: 'studentDetails/:id', component: StudentDetailsComponent },
+    { path: 'teachers', component: TeachersComponent },
+    { path: 'teacherAdd', component: TeacherAddComponent },
+    { path: 'teacherEdit/:id', component: TeacherEditComponent },
+    { path: 'teacherDetails/:id', component: TeacherDetailsComponent },
+    { path: 'lessons', component: LessonsComponent },
+    { path: 'lessonAdd', component: LessonAddComponent },
+    { path: 'lessonEdit/:id', component: LessonEditComponent },
+    { path: 'lessonDetails/:id', component: LessonDetailsComponent },
+], { relativeLinkResolution: 'legacy' })
   ],
   providers: [],
   bootstrap: [AppComponent]
