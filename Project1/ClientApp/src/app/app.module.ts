@@ -22,6 +22,7 @@ import { LessonsComponent } from './lesson/lesson.component';
 import { LessonAddComponent } from './lesson/lessonAdd.component';
 import { LessonEditComponent } from './lesson/lessonEdit.component';
 import { LessonDetailsComponent } from './lesson/lessonDetails.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { LessonDetailsComponent } from './lesson/lessonDetails.component';
     { path: 'lessonAdd', component: LessonAddComponent },
     { path: 'lessonEdit/:id', component: LessonEditComponent },
     { path: 'lessonDetails/:id', component: LessonDetailsComponent },
-], { relativeLinkResolution: 'legacy' })
+], { relativeLinkResolution: 'legacy' }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
