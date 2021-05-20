@@ -7,16 +7,42 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+
+import { StudentAddComponent } from './student/studentAdd.component';
+import { StudentsComponent } from './student/student.component';
+import { StudentEditComponent } from './student/studentEdit.component';
+import { StudentDetailsComponent } from './student/studentDetails.component';
+
+import { TeachersComponent } from './teacher/teacher.component';
+import { TeacherAddComponent } from './teacher/teacherAdd.component';
+import { TeacherEditComponent } from './teacher/teacherEdit.component';
+import { TeacherDetailsComponent } from './teacher/teacherDetails.component';
+
+import { LessonsComponent } from './lesson/lesson.component';
+import { LessonAddComponent } from './lesson/lessonAdd.component';
+import { LessonEditComponent } from './lesson/lessonEdit.component';
+import { LessonDetailsComponent } from './lesson/lessonDetails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+
+    StudentsComponent,
+    StudentAddComponent,
+    StudentEditComponent,
+    StudentDetailsComponent,
+
+    TeachersComponent,
+    TeacherAddComponent,
+    TeacherEditComponent,
+    TeacherDetailsComponent,
+
+    LessonsComponent,
+    LessonAddComponent,
+    LessonEditComponent,
+    LessonDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,8 +50,20 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'students', component: StudentsComponent },
+      { path: 'studentAdd', component: StudentAddComponent },
+      { path: 'studentEdit/:id', component: StudentEditComponent },
+      { path: 'studentDetails/:id', component: StudentDetailsComponent },
+
+      { path: 'teachers', component: TeachersComponent },
+      { path: 'teacherAdd', component: TeacherAddComponent },
+      { path: 'teacherEdit/:id', component: TeacherEditComponent },
+      { path: 'teacherDetails/:id', component: TeacherDetailsComponent },
+
+      { path: 'lessons', component: LessonsComponent },
+      { path: 'lessonAdd', component: LessonAddComponent },
+      { path: 'lessonEdit/:id', component: LessonEditComponent },
+      { path: 'lessonDetails/:id', component: LessonDetailsComponent },
     ])
   ],
   providers: [],

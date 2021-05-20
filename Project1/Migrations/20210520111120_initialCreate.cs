@@ -8,17 +8,17 @@ namespace Project1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Class",
+                name: "Lesson",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Time = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<double>(type: "float", nullable: false)
+                    Price = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Class", x => x.ID);
+                    table.PrimaryKey("PK_Lesson", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,7 +53,7 @@ namespace Project1.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Class");
+                name: "Lesson");
 
             migrationBuilder.DropTable(
                 name: "Student");

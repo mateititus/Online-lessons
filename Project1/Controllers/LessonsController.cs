@@ -12,47 +12,47 @@ namespace Project1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClassesController : ControllerBase
+    public class LessonsController : ControllerBase
     {
         private readonly Project1Context _context;
 
-        public ClassesController(Project1Context context)
+        public LessonsController(Project1Context context)
         {
             _context = context;
         }
 
-        // GET: api/Classes
+        // GET: api/Lessons
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Class>>> GetClass()
+        public async Task<ActionResult<IEnumerable<Lesson>>> GetLesson()
         {
-            return await _context.Class.ToListAsync();
+            return await _context.Lesson.ToListAsync();
         }
 
-        // GET: api/Classes/5
+        // GET: api/Lessons/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Class>> GetClass(Guid id)
+        public async Task<ActionResult<Lesson>> GetLesson(Guid id)
         {
-            var @class = await _context.Class.FindAsync(id);
+            var lesson = await _context.Lesson.FindAsync(id);
 
-            if (@class == null)
+            if (lesson == null)
             {
                 return NotFound();
             }
 
-            return @class;
+            return lesson;
         }
 
-        // PUT: api/Classes/5
+        // PUT: api/Lessons/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClass(Guid id, Class @class)
+        public async Task<IActionResult> PutLesson(Guid id, Lesson lesson)
         {
-            if (id != @class.ID)
+            if (id != lesson.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(@class).State = EntityState.Modified;
+            _context.Entry(lesson).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace Project1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClassExists(id))
+                if (!LessonExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace Project1.Controllers
             return NoContent();
         }
 
-        // POST: api/Classes
+        // POST: api/Lessons
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Class>> PostClass(Class @class)
+        public async Task<ActionResult<Lesson>> PostLesson(Lesson lesson)
         {
-            _context.Class.Add(@class);
+            _context.Lesson.Add(lesson);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetClass", new { id = @class.ID }, @class);
+            return CreatedAtAction("GetLesson", new { id = lesson.ID }, lesson);
         }
 
-        // DELETE: api/Classes/5
+        // DELETE: api/Lessons/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteClass(Guid id)
+        public async Task<IActionResult> DeleteLesson(Guid id)
         {
-            var @class = await _context.Class.FindAsync(id);
-            if (@class == null)
+            var lesson = await _context.Lesson.FindAsync(id);
+            if (lesson == null)
             {
                 return NotFound();
             }
 
-            _context.Class.Remove(@class);
+            _context.Lesson.Remove(lesson);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ClassExists(Guid id)
+        private bool LessonExists(Guid id)
         {
-            return _context.Class.Any(e => e.ID == id);
+            return _context.Lesson.Any(e => e.ID == id);
         }
     }
 }

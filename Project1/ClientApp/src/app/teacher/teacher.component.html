@@ -1,0 +1,35 @@
+<h1 id="tableLabel">Teachers</h1>
+
+<br>
+<br />
+
+<button class="btn btn-primary" [routerLink]="['/teacherAdd']">Add teacher</button>
+
+<br>
+<br />
+
+
+<p *ngIf="!teachers"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="teachers">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Class</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let teacher of teachers">
+      <td>{{ teacher.name }}</td>
+      <td>{{ teacher.phone }}</td>
+      <td>{{ teacher.class }}</td>
+      <td><button class="btn btn-primary" [routerLink]="['/teacherDetails', teacher.id]">Details</button></td>
+      <td><button class="btn btn-primary" [routerLink]="['/teacherEdit', teacher.id]">Edit</button></td>
+      <td><button class="btn btn-primary" (click)="deleteTeacher(teacher)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

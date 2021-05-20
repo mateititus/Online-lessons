@@ -1,0 +1,35 @@
+<h1 id="tableLabel">Lessons</h1>
+
+<br>
+<br />
+
+<button class="btn btn-primary" [routerLink]="['/lessonAdd']">Add lesson</button>
+
+<br>
+<br />
+
+
+<p *ngIf="!lessons"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="lessons">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Time</th>
+      <th>Price(€)</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let lesson of lessons">
+      <td>{{ lesson.name }}</td>
+      <td>{{ lesson.time }}</td>
+      <td>{{ lesson.price }}</td>
+      <td><button class="btn btn-primary" [routerLink]="['/lessonDetails', lesson.id]">Details</button></td>
+      <td><button class="btn btn-primary" [routerLink]="['/lessonEdit', lesson.id]">Edit</button></td>
+      <td><button class="btn btn-primary" (click)="deleteLesson(lesson)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

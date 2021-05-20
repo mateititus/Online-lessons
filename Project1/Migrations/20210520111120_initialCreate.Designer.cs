@@ -10,7 +10,7 @@ using Project1.Data;
 namespace Project1.Migrations
 {
     [DbContext(typeof(Project1Context))]
-    [Migration("20210520075821_initialCreate")]
+    [Migration("20210520111120_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace Project1.Migrations
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Project1.Models.Class", b =>
+            modelBuilder.Entity("Project1.Models.Lesson", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -30,15 +30,15 @@ namespace Project1.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<string>("Time")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Class");
+                    b.ToTable("Lesson");
                 });
 
             modelBuilder.Entity("Project1.Models.Student", b =>

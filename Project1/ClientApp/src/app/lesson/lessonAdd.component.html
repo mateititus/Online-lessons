@@ -1,0 +1,18 @@
+<h1 id="tableLabel">Add lesson</h1>
+Name:
+<br />
+<input [(ngModel)]="lesson.name" />
+<br />
+<br />
+Time:
+<br />
+<input [(ngModel)]="lesson.time" />
+<br />
+<br />
+Price(€):
+<br />
+<input [(ngModel)]="lesson.price" />
+<br />
+<br />
+<button class="btn btn-primary" (click)="saveLesson()">Save Lesson</button>
+<br />
