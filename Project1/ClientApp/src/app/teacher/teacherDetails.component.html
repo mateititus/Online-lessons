@@ -1,16 +1,13 @@
-<h1 id="tableLabel">Teacher details</h1>
-<b>Id:</b>
-{{ teacher.id }}
-<br />
-<b>Name:</b>
-{{ teacher.name }}
-<br />
-<b>Phone:</b>
-{{ teacher.phone }}
-<br />
-<b>Class:</b>
-{{ teacher.class }}
-<br />
-<br />
-<button class="btn btn-primary" [routerLink]="['/teachers']">Back to list</button>
-<br />
+<div *ngIf="teacher">
+  <mat-card>
+    <mat-card-content>
+      <h1 id="tableLabel">Details</h1>
+
+      <p aria-live="polite">Name: <strong>{{ teacher.name }}</strong></p>
+
+      <p aria-live="polite">Phone: <strong>{{ teacher.phone }}</strong></p>
+
+      <p aria-live="polite">Class: <strong>{{ teacher.class }}</strong></p>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,18 +1,21 @@
-<h1 id="tableLabel">Add lesson</h1>
-Name:
-<br />
-<input [(ngModel)]="lesson.name" />
-<br />
-<br />
-Time:
-<br />
-<input [(ngModel)]="lesson.time" />
-<br />
-<br />
-Price(€):
-<br />
-<input [(ngModel)]="lesson.price" />
-<br />
-<br />
-<button class="btn btn-primary" (click)="saveLesson()">Save Lesson</button>
-<br />
+<mat-card>
+  <mat-card-content>
+    <h2 class="example-h2">Add lesson</h2>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Name" [(ngModel)]="lesson.name">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput type="text" placeholder="Time" [(ngModel)]="lesson.time">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput type="text" placeholder="Price(€)" [(ngModel)]="lesson.price">
+    </mat-form-field>
+    <br />
+
+    <button mat-raised-button color="accent" (click)="saveLesson()">Save Lesson</button>
+    <br />
+  </mat-card-content>
+</mat-card>

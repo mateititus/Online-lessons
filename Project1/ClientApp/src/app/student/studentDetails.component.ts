@@ -1,28 +1,28 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from './student.models';
+import StudentService from './student.service';
 
 @Component({
   selector: 'app-studentDetails',
   templateUrl: './studentDetails.component.html'
 })
-export class StudentDetailsComponent {
+export class StudentDetailsComponent implements OnInit {
 
   public student: Student = <Student>{};
   public id: string;
 
+  constructor(private studentService: StudentService, private router: ActivatedRoute, private routers: Router) { }
+
   ngOnInit() {
-    this.routers.params.subscribe(params => {
-      this.id = params.id;
-      this.loadStudents();
+    this.router.params.subscribe(param => {
+      this.id = param['id'];
+      this.loadStudent();
     });
   }
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private routers: ActivatedRoute, private router: Router) { }
-
-  loadStudents() {
-    this.http.get<Student>(this.baseUrl + 'api/students/' + this.id).subscribe(result => {
+  loadStudent() {
+    this.studentService.loadStudentById(this.id).subscribe(result => {
       this.student = result;
     }, error => console.error(error));
   }

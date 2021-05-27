@@ -1,37 +1,35 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Teacher } from './teacher.models';
+import { TeacherService } from './teacher.service';
 
 @Component({
   selector: 'app-teacherEdit',
   templateUrl: './teacherEdit.component.html'
 })
-export class TeacherEditComponent {
+export class TeacherEditComponent implements OnInit {
 
   public teacher: Teacher = <Teacher>{};
   public id: string;
 
   ngOnInit() {
-    this.routers.params.subscribe(params => {
-      this.id = params.id;
-      this.loadTeachers();
+    this.routers.params.subscribe(param => {
+      this.id = param['id'];
+      this.loadTeacher();
     });
   }
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private routers: ActivatedRoute, private router: Router) { }
+  constructor(private teacherService: TeacherService, private routers: ActivatedRoute, private router: Router) { }
 
-  loadTeachers() {
-    this.http.get<Teacher>(this.baseUrl + 'api/teachers/' + this.id).subscribe(result => {
+  loadTeacher() {
+    this.teacherService.loadTeacherById(this.id).subscribe(result => {
       this.teacher = result;
     }, error => console.error(error));
   }
 
-  public saveEditTeacher() {
-    this.http.put<Teacher>(this.baseUrl + 'api/teachers/' + this.id, this.teacher).subscribe(result => {
+  public saveTeacher() {
+    this.teacherService.updateTeacher(this.teacher.id, this.teacher).subscribe(result => {
       this.router.navigateByUrl("/teachers");
-    }, error => console.error(error))
+    }, error => console.error(error));
   }
-
-
 }

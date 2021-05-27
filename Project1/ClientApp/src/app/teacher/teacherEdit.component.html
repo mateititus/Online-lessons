@@ -1,18 +1,21 @@
-<h1 id="tableLabel">Edit teacher</h1>
-<b>Name:</b>
-<br />
-<input [(ngModel)]="teacher.name" />
-<br />
-<br />
-<b>Phone:</b>
-<br />
-<input [(ngModel)]="teacher.phone" />
-<br />
-<br />
-<b>Class:</b>
-<br />
-<input [(ngModel)]="teacher.class" />
-<br />
-<br />
-<button class="btn btn-primary" (click)="saveEditTeacher()">Save</button>
-<br />
+<div *ngIf="teacher">
+  <mat-card>
+    <mat-card-content>
+      <h2 class="example-h2">Update teacher</h2>
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Name" [(ngModel)]="teacher.name">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <input matInput type="text" placeholder="Phone" [(ngModel)]="teacher.phone">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <input matInput type="text" placeholder="Class" [(ngModel)]="teacher.class">
+      </mat-form-field>
+
+      <button mat-raised-button color="accent" (click)="saveTeacher()">Save updates</button> <br />
+    </mat-card-content>
+  </mat-card>
+</div>

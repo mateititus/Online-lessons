@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { Teacher } from './teacher.models';
+import { TeacherService } from './teacher.service';
 
 @Component({
   selector: 'app-teacher',
@@ -9,20 +9,25 @@ import { Teacher } from './teacher.models';
 export class TeachersComponent {
   public teachers: Teacher[];
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  columnsToDisplay: string[] = ['name', 'phone', 'class', 'actions'];
+
+  constructor(
+    private teacherService: TeacherService) {
     this.loadTeachers();
   }
 
   public deleteTeacher(teacher: Teacher) {
-    this.http.delete(this.baseUrl + 'api/teachers/' + teacher.id).subscribe(result => {
+    this.teacherService.deleteTeacher(teacher).subscribe(result => {
       this.loadTeachers();
     }, error => console.error(error))
   }
 
-  loadTeachers() {
-    this.http.get<Teacher[]>(this.baseUrl + 'api/teachers').subscribe(result => {
-      this.teachers = result;
-    }, error => console.error(error));
+  public loadTeachers() {
+    this.teacherService.loadTeachers().subscribe(
+      (result) => {
+        this.teachers = result;
+      },
+      (error) => console.error(error)
+    );
   }
 }
-

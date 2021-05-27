@@ -2,34 +2,47 @@
 
 <br>
 <br />
-
-<button class="btn btn-primary" [routerLink]="['/teacherAdd']">Add teacher</button>
-
+<button mat-raised-button color="accent" [routerLink]="['/teacherAdd']">Add teacher</button>
 <br>
 <br />
-
-
 <p *ngIf="!teachers"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="teachers">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Class</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let teacher of teachers">
-      <td>{{ teacher.name }}</td>
-      <td>{{ teacher.phone }}</td>
-      <td>{{ teacher.class }}</td>
-      <td><button class="btn btn-primary" [routerLink]="['/teacherDetails', teacher.id]">Details</button></td>
-      <td><button class="btn btn-primary" [routerLink]="['/teacherEdit', teacher.id]">Edit</button></td>
-      <td><button class="btn btn-primary" (click)="deleteTeacher(teacher)">Delete</button></td>
-    </tr>
-  </tbody>
+<table mat-table [dataSource]="teachers" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef style="width:25%"><strong>Name</strong></th>
+    <td mat-cell *matCellDef="let teacher"> {{teacher.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef style="width:25%"><strong>Phone</strong></th>
+    <td mat-cell *matCellDef="let teacher"> {{teacher.phone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="class">
+    <th mat-header-cell *matHeaderCellDef style="width:25%"><strong>Class</strong></th>
+    <td mat-cell *matCellDef="let teacher"> {{teacher.class}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef style="width:15%"></th>
+    <td mat-cell *matCellDef="let teacher">
+      <section>
+        <div>
+          <button mat-icon-button color="primary" matTooltip="Edit">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" [routerLink]="['/teacherEdit', teacher.id]" style="cursor:pointer">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Info">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" [routerLink]="['/teacherDetails', teacher.id]" style="cursor:pointer">info</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Delete">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="deleteTeacher(teacher)" style="cursor:pointer">delete</mat-icon>
+          </button>
+        </div>
+      </section>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay "></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay ;"></tr>
 </table>

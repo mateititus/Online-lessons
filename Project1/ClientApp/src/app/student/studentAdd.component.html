@@ -1,18 +1,21 @@
-<h1 id="tableLabel">Add student</h1>
-Name:
-<br />
-<input [(ngModel)]="student.name" />
-<br />
-<br />
-Age:
-<br />
-<input [(ngModel)]="student.age" />
-<br />
-<br />
-Phone:
-<br />
-<input [(ngModel)]="student.phone" />
-<br />
-<br />
-<button class="btn btn-primary" (click)="saveStudent()">Save Student</button>
-<br />
+<mat-card>
+  <mat-card-content>
+    <h2 class="example-h2">Add student</h2>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Name" [(ngModel)]="student.name">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput type="text" placeholder="Age" [(ngModel)]="student.age">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput type="text" placeholder="Phone" [(ngModel)]="student.phone">
+    </mat-form-field>
+    <br />
+
+    <button mat-raised-button color="accent" (click)="saveStudent()">Save Student</button>
+    <br />
+  </mat-card-content>
+</mat-card>

@@ -1,16 +1,13 @@
-<h1 id="tableLabel">Lesson details</h1>
-<b>Id:</b>
-{{ lesson.id }}
-<br />
-<b>Name:</b>
-{{ lesson.name }}
-<br />
-<b>Time:</b>
-{{ lesson.time }}
-<br />
-<b>Price(€):</b>
-{{ lesson.price }}
-<br />
-<br />
-<button class="btn btn-primary" [routerLink]="['/lessons']">Back to list</button>
-<br />
+<div *ngIf="lesson">
+  <mat-card>
+    <mat-card-content>
+      <h1 id="tableLabel">Details</h1>
+
+      <p aria-live="polite">Name: <strong>{{ lesson.name }}</strong></p>
+
+      <p aria-live="polite">Time: <strong>{{ lesson.time }}</strong></p>
+
+      <p aria-live="polite">Price(€): <strong>{{ lesson.price }}</strong></p>
+    </mat-card-content>
+  </mat-card>
+</div>

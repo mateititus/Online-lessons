@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Teacher } from './teacher.models';
+import { TeacherService } from './teacher.service';
 
 @Component({
   selector: 'app-teacherAdd',
@@ -12,14 +12,13 @@ export class TeacherAddComponent {
   public teacher: Teacher = <Teacher>{};
 
   constructor(
-    private http: HttpClient,
-    @Inject('BASE_URL') private baseUrl: string,
+    private teacherService: TeacherService,
     private router: Router) {
   }
+
   public saveTeacher() {
-    this.http.post(this.baseUrl + 'api/teachers', this.teacher).subscribe(result => {
+    this.teacherService.saveTeacher(this.teacher).subscribe(result => {
       this.router.navigateByUrl("/teachers");
     }, error => console.error(error));
   }
-
 }

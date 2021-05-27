@@ -22,7 +22,15 @@ import { LessonsComponent } from './lesson/lesson.component';
 import { LessonAddComponent } from './lesson/lessonAdd.component';
 import { LessonEditComponent } from './lesson/lessonEdit.component';
 import { LessonDetailsComponent } from './lesson/lessonDetails.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 @NgModule({
   declarations: [
@@ -50,21 +58,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-    { path: '', component: HomeComponent, pathMatch: 'full' },
-    { path: 'students', component: StudentsComponent },
-    { path: 'studentAdd', component: StudentAddComponent },
-    { path: 'studentEdit/:id', component: StudentEditComponent },
-    { path: 'studentDetails/:id', component: StudentDetailsComponent },
-    { path: 'teachers', component: TeachersComponent },
-    { path: 'teacherAdd', component: TeacherAddComponent },
-    { path: 'teacherEdit/:id', component: TeacherEditComponent },
-    { path: 'teacherDetails/:id', component: TeacherDetailsComponent },
-    { path: 'lessons', component: LessonsComponent },
-    { path: 'lessonAdd', component: LessonAddComponent },
-    { path: 'lessonEdit/:id', component: LessonEditComponent },
-    { path: 'lessonDetails/:id', component: LessonDetailsComponent },
-], { relativeLinkResolution: 'legacy' }),
-    BrowserAnimationsModule
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'students', component: StudentsComponent },
+      { path: 'studentAdd', component: StudentAddComponent },
+      { path: 'studentEdit/:id', component: StudentEditComponent },
+      { path: 'studentDetails/:id', component: StudentDetailsComponent },
+      { path: 'teachers', component: TeachersComponent },
+      { path: 'teacherAdd', component: TeacherAddComponent },
+      { path: 'teacherEdit/:id', component: TeacherEditComponent },
+      { path: 'teacherDetails/:id', component: TeacherDetailsComponent },
+      { path: 'lessons', component: LessonsComponent },
+      { path: 'lessonAdd', component: LessonAddComponent },
+      { path: 'lessonEdit/:id', component: LessonEditComponent },
+      { path: 'lessonDetails/:id', component: LessonDetailsComponent },
+    ], { relativeLinkResolution: 'legacy' }),
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

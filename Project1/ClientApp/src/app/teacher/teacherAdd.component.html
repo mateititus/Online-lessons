@@ -1,18 +1,21 @@
-<h1 id="tableLabel">Add teacher</h1>
-Name:
-<br />
-<input [(ngModel)]="teacher.name" />
-<br />
-<br />
-Phone:
-<br />
-<input [(ngModel)]="teacher.phone" />
-<br />
-<br />
-Class:
-<br />
-<input [(ngModel)]="teacher.class" />
-<br />
-<br />
-<button class="btn btn-primary" (click)="saveTeacher()">Save Teacher</button>
-<br />
+<mat-card>
+  <mat-card-content>
+    <h2 class="example-h2">Add teacher</h2>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Name" [(ngModel)]="teacher.name">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput type="text" placeholder="Phone" [(ngModel)]="teacher.phone">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput type="text" placeholder="Class" [(ngModel)]="teacher.class">
+    </mat-form-field>
+    <br />
+
+    <button mat-raised-button color="accent" (click)="saveTeacher()">Save Lesson</button>
+    <br />
+  </mat-card-content>
+</mat-card>
