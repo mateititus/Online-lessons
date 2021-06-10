@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from './student.models';
-import StudentService from './student.service';
+import { StudentService } from './student.service';
 
 @Component({
   selector: 'app-studentEdit',

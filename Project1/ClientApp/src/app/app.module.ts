@@ -23,6 +23,16 @@ import { LessonAddComponent } from './lesson/lessonAdd.component';
 import { LessonEditComponent } from './lesson/lessonEdit.component';
 import { LessonDetailsComponent } from './lesson/lessonDetails.component';
 
+import { PlansComponent } from './plan/plan.component';
+import { PlanAddComponent } from './plan/planAdd.component';
+import { PlanEditComponent } from './plan/planEdit.component';
+import { PlanDetailsComponent } from './plan/planDetails.component';
+
+import { OwnersComponent } from './owner/owner.component';
+import { OwnerAddComponent } from './owner/ownerAdd.component';
+import { OwnerEditComponent } from './owner/ownerEdit.component';
+import { OwnerDetailsComponent } from './owner/ownerDetails.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -52,6 +62,16 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     LessonAddComponent,
     LessonEditComponent,
     LessonDetailsComponent,
+
+    PlansComponent,
+    PlanAddComponent,
+    PlanEditComponent,
+    PlanDetailsComponent,
+
+    OwnersComponent,
+    OwnerAddComponent,
+    OwnerEditComponent,
+    OwnerDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -63,14 +83,26 @@ import { MatTooltipModule } from '@angular/material/tooltip';
       { path: 'studentAdd', component: StudentAddComponent },
       { path: 'studentEdit/:id', component: StudentEditComponent },
       { path: 'studentDetails/:id', component: StudentDetailsComponent },
+
       { path: 'teachers', component: TeachersComponent },
       { path: 'teacherAdd', component: TeacherAddComponent },
       { path: 'teacherEdit/:id', component: TeacherEditComponent },
       { path: 'teacherDetails/:id', component: TeacherDetailsComponent },
+
       { path: 'lessons', component: LessonsComponent },
       { path: 'lessonAdd', component: LessonAddComponent },
       { path: 'lessonEdit/:id', component: LessonEditComponent },
       { path: 'lessonDetails/:id', component: LessonDetailsComponent },
+
+      { path: 'plans', component: PlansComponent },
+      { path: 'planAdd', component: PlanAddComponent },
+      { path: 'planEdit/:id', component: PlanEditComponent },
+      { path: 'planDetails/:id', component: PlanDetailsComponent },
+
+      { path: 'owners', component: OwnersComponent },
+      { path: 'ownerAdd', component: OwnerAddComponent },
+      { path: 'ownerEdit/:id', component: OwnerEditComponent },
+      { path: 'ownerDetails/:id', component: OwnerDetailsComponent },
     ], { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,
     MatTableModule,

@@ -19,8 +19,8 @@ export class LessonService {
     return this.http.get<Lesson>(this.baseUrl + 'api/lessons/' + id);
   }
 
-  public saveLesson(lesson: Lesson) {
-    return this.http.post(this.baseUrl + 'api/lessons', lesson);
+   saveLesson(lesson: Lesson) {
+   return this.http.post(this.baseUrl + 'api/lessons', lesson);
   }
 
   updateLesson(id, lesson: Lesson) {

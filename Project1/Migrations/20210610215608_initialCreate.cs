@@ -22,6 +22,37 @@ namespace Project1.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Owner",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Age = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Owner", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Plan",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TeacherName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StudentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LessonName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Done = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Plan", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Student",
                 columns: table => new
                 {
@@ -54,6 +85,12 @@ namespace Project1.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Lesson");
+
+            migrationBuilder.DropTable(
+                name: "Owner");
+
+            migrationBuilder.DropTable(
+                name: "Plan");
 
             migrationBuilder.DropTable(
                 name: "Student");

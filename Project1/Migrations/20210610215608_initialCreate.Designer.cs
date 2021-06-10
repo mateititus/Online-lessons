@@ -10,7 +10,7 @@ using Project1.Data;
 namespace Project1.Migrations
 {
     [DbContext(typeof(Project1Context))]
-    [Migration("20210520111120_initialCreate")]
+    [Migration("20210610215608_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,55 @@ namespace Project1.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Lesson");
+                });
+
+            modelBuilder.Entity("Project1.Models.Owner", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Adress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Age")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Owner");
+                });
+
+            modelBuilder.Entity("Project1.Models.Plan", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Done")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LessonName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StudentName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeacherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Plan");
                 });
 
             modelBuilder.Entity("Project1.Models.Student", b =>

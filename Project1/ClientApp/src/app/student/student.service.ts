@@ -5,7 +5,7 @@ import { Student } from './student.models';
 @Injectable({
   providedIn: 'root'
 })
-export default class StudentService {
+export class StudentService {
 
   constructor(private http: HttpClient,
     @Inject("BASE_URL") private baseUrl: string
@@ -19,7 +19,7 @@ export default class StudentService {
     return this.http.get<Student>(this.baseUrl + 'api/students/' + id);
   }
 
-  public saveStudent(student: Student) {
+  saveStudent(student: Student) {
     return this.http.post(this.baseUrl + 'api/students', student);
   }
 

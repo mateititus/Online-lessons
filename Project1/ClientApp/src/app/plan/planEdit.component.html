@@ -1,0 +1,28 @@
+<div *ngIf="plan">
+  <mat-card>
+    <mat-card-content>
+      <h2 class="example-h2">Update plan</h2>
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Teacher Name" [(ngModel)]="plan.teacherName">
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Student Name" [(ngModel)]="plan.studentName">
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Lesson Name" [(ngModel)]="plan.lessonName">
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Done" [(ngModel)]="plan.done">
+      </mat-form-field>
+      <br />
+      <button mat-raised-button color="accent" (click)="savePlan()">Save updates</button> <br />
+    </mat-card-content>
+  </mat-card>
+</div>

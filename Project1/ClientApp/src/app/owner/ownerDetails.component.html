@@ -1,0 +1,17 @@
+<div *ngIf="owner">
+  <mat-card>
+    <mat-card-content>
+      <h1 id="tableLabel">Details</h1>
+
+      <p aria-live="polite">Name: <strong>{{ owner.name }}</strong></p>
+
+      <p aria-live="polite">Age: <strong>{{ owner.age }}</strong></p>
+
+      <p aria-live="polite">Phone: <strong>{{ owner.phone }}</strong></p>
+
+      <p aria-live="polite">Email: <strong>{{ owner.email }}</strong></p>
+
+      <p aria-live="polite">Adress: <strong>{{ owner.adress }}</strong></p>
+    </mat-card-content>
+  </mat-card>
+</div>

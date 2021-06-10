@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Student } from './student.models';
-import StudentService from './student.service';
+import { StudentService } from './student.service';
 
 @Component({
   selector: 'app-student',

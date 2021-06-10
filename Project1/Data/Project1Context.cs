@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Project1.Models;
 
 namespace Project1.Data
@@ -19,5 +15,9 @@ namespace Project1.Data
         public DbSet<Project1.Models.Teacher> Teacher { get; set; }
 
         public DbSet<Project1.Models.Lesson> Lesson { get; set; }
+
+        public DbSet<Project1.Models.Plan> Plan { get; set; }
+
+        public DbSet<Project1.Models.Owner> Owner { get; set; }
     }
 }

@@ -1,57 +1,58 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Project1.Data;
-using Project1.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Project1.Data;
+using Project1.Models;
 
 namespace Project1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LessonsController : ControllerBase
+    public class PlansController : ControllerBase
     {
         private readonly Project1Context _context;
 
-        public LessonsController(Project1Context context)
+        public PlansController(Project1Context context)
         {
             _context = context;
         }
 
-        // GET: api/Lessons
+        // GET: api/Plans
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Lesson>>> GetLesson()
+        public async Task<ActionResult<IEnumerable<Plan>>> GetPlan()
         {
-            return await _context.Lesson.ToListAsync();
+            return await _context.Plan.ToListAsync();
         }
 
-        // GET: api/Lessons/5
+        // GET: api/Plans/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Lesson>> GetLesson(Guid id)
+        public async Task<ActionResult<Plan>> GetPlan(Guid id)
         {
-            var lesson = await _context.Lesson.FindAsync(id);
+            var plan = await _context.Plan.FindAsync(id);
 
-            if (lesson == null)
+            if (plan == null)
             {
                 return NotFound();
             }
 
-            return lesson;
+            return plan;
         }
 
-        // PUT: api/Lessons/5
+        // PUT: api/Plans/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLesson(Guid id, Lesson lesson)
+        public async Task<IActionResult> PutPlan(Guid id, Plan plan)
         {
-            if (id != lesson.ID)
+            if (id != plan.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(lesson).State = EntityState.Modified;
+            _context.Entry(plan).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +60,7 @@ namespace Project1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!LessonExists(id))
+                if (!PlanExists(id))
                 {
                     return NotFound();
                 }
@@ -72,36 +73,36 @@ namespace Project1.Controllers
             return NoContent();
         }
 
-        // POST: api/Lessons
+        // POST: api/Plans
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Lesson>> PostLesson(Lesson lesson)
+        public async Task<ActionResult<Plan>> PostPlan(Plan plan)
         {
-            _context.Lesson.Add(lesson);
+            _context.Plan.Add(plan);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLesson", new { id = lesson.ID }, lesson);
+            return CreatedAtAction("GetPlan", new { id = plan.ID }, plan);
         }
 
-        // DELETE: api/Lessons/5
+        // DELETE: api/Plans/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLesson(Guid id)
+        public async Task<IActionResult> DeletePlan(Guid id)
         {
-            var lesson = await _context.Lesson.FindAsync(id);
-            if (lesson == null)
+            var plan = await _context.Plan.FindAsync(id);
+            if (plan == null)
             {
                 return NotFound();
             }
 
-            _context.Lesson.Remove(lesson);
+            _context.Plan.Remove(plan);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool LessonExists(Guid id)
+        private bool PlanExists(Guid id)
         {
-            return _context.Lesson.Any(e => e.ID == id);
+            return _context.Plan.Any(e => e.ID == id);
         }
     }
 }

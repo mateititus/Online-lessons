@@ -1,0 +1,59 @@
+<h1 id="tableLabel">Owners</h1>
+
+<br>
+<br />
+<button mat-raised-button color="accent" [routerLink]="['/ownerAdd']">Add owner</button>
+<br>
+<br />
+<p *ngIf="!owners"><em>Loading...</em></p>
+
+
+<table mat-table [dataSource]="owners" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef style="width:15%">Name</th>
+    <td mat-cell *matCellDef="let owner"> {{owner.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="age">
+    <th mat-header-cell *matHeaderCellDef style="width:15%">Age</th>
+    <td mat-cell *matCellDef="let owner"> {{owner.age}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef style="width:15%">Phone</th>
+    <td mat-cell *matCellDef="let owner"> {{owner.phone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef style="width:15%">Email</th>
+    <td mat-cell *matCellDef="let owner"> {{owner.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="adress">
+    <th mat-header-cell *matHeaderCellDef style="width:15%">Adress</th>
+    <td mat-cell *matCellDef="let owner"> {{owner.adress}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef style="width:5%"></th>
+    <td mat-cell *matCellDef="let owner">
+      <section>
+        <div>
+          <button mat-icon-button color="primary" matTooltip="Edit">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" [routerLink]="['/ownerEdit', owner.id]" style="cursor:pointer">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Info">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" [routerLink]="['/ownerDetails', owner.id]" style="cursor:pointer">info</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Delete">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="deleteOwner(owner)" style="cursor:pointer">delete</mat-icon>
+          </button>
+        </div>
+      </section>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay "></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay ;"></tr>
+</table>

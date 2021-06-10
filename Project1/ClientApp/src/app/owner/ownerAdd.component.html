@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-content>
+    <h2 class="example-h2">Add owner</h2>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Name" [(ngModel)]="owner.name">
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Age" [(ngModel)]="owner.age">
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Phone" [(ngModel)]="owner.phone">
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Email" [(ngModel)]="owner.email">
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Adress" [(ngModel)]="owner.adress">
+    </mat-form-field>
+    <br />
+
+    <button mat-raised-button color="accent" (click)="saveOwner()">Save Owner</button>
+    <br />
+  </mat-card-content>
+</mat-card>

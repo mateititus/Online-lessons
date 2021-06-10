@@ -17,7 +17,7 @@ export class TeacherService {
     return this.http.get<Teacher>(this.baseUrl + 'api/teachers/' + id);
   }
 
-  public saveTeacher(teacher: Teacher) {
+  saveTeacher(teacher: Teacher) {
     return this.http.post(this.baseUrl + 'api/teachers', teacher);
   }
 

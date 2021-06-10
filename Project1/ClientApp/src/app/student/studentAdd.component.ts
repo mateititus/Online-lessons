@@ -1,8 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from './student.models';
-import StudentService from './student.service';
-
+import { StudentService } from './student.service';
 @Component({
   selector: 'app-studentAdd',
   templateUrl: './studentAdd.component.html'

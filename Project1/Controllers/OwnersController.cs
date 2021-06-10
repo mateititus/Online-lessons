@@ -1,57 +1,58 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Project1.Data;
-using Project1.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Project1.Data;
+using Project1.Models;
 
 namespace Project1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LessonsController : ControllerBase
+    public class OwnersController : ControllerBase
     {
         private readonly Project1Context _context;
 
-        public LessonsController(Project1Context context)
+        public OwnersController(Project1Context context)
         {
             _context = context;
         }
 
-        // GET: api/Lessons
+        // GET: api/Owners
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Lesson>>> GetLesson()
+        public async Task<ActionResult<IEnumerable<Owner>>> GetOwner()
         {
-            return await _context.Lesson.ToListAsync();
+            return await _context.Owner.ToListAsync();
         }
 
-        // GET: api/Lessons/5
+        // GET: api/Owners/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Lesson>> GetLesson(Guid id)
+        public async Task<ActionResult<Owner>> GetOwner(Guid id)
         {
-            var lesson = await _context.Lesson.FindAsync(id);
+            var owner = await _context.Owner.FindAsync(id);
 
-            if (lesson == null)
+            if (owner == null)
             {
                 return NotFound();
             }
 
-            return lesson;
+            return owner;
         }
 
-        // PUT: api/Lessons/5
+        // PUT: api/Owners/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLesson(Guid id, Lesson lesson)
+        public async Task<IActionResult> PutOwner(Guid id, Owner owner)
         {
-            if (id != lesson.ID)
+            if (id != owner.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(lesson).State = EntityState.Modified;
+            _context.Entry(owner).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +60,7 @@ namespace Project1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!LessonExists(id))
+                if (!OwnerExists(id))
                 {
                     return NotFound();
                 }
@@ -72,36 +73,36 @@ namespace Project1.Controllers
             return NoContent();
         }
 
-        // POST: api/Lessons
+        // POST: api/Owners
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Lesson>> PostLesson(Lesson lesson)
+        public async Task<ActionResult<Owner>> PostOwner(Owner owner)
         {
-            _context.Lesson.Add(lesson);
+            _context.Owner.Add(owner);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLesson", new { id = lesson.ID }, lesson);
+            return CreatedAtAction("GetOwner", new { id = owner.ID }, owner);
         }
 
-        // DELETE: api/Lessons/5
+        // DELETE: api/Owners/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLesson(Guid id)
+        public async Task<IActionResult> DeleteOwner(Guid id)
         {
-            var lesson = await _context.Lesson.FindAsync(id);
-            if (lesson == null)
+            var owner = await _context.Owner.FindAsync(id);
+            if (owner == null)
             {
                 return NotFound();
             }
 
-            _context.Lesson.Remove(lesson);
+            _context.Owner.Remove(owner);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool LessonExists(Guid id)
+        private bool OwnerExists(Guid id)
         {
-            return _context.Lesson.Any(e => e.ID == id);
+            return _context.Owner.Any(e => e.ID == id);
         }
     }
 }

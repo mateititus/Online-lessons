@@ -1,0 +1,15 @@
+<div *ngIf="plan">
+  <mat-card>
+    <mat-card-content>
+      <h1 id="tableLabel">Details</h1>
+
+      <p aria-live="polite">Teacher Name: <strong>{{ plan.teacherName }}</strong></p>
+
+      <p aria-live="polite">Student Name: <strong>{{ plan.studentName }}</strong></p>
+
+      <p aria-live="polite">Lesson Name: <strong>{{ plan.lessonName }}</strong></p>
+
+      <p aria-live="polite">Done: <strong>{{ plan.done }}</strong></p>
+    </mat-card-content>
+  </mat-card>
+</div>

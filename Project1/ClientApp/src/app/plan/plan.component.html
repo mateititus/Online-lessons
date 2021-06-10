@@ -1,0 +1,54 @@
+<h1 id="tableLabel">Plans</h1>
+
+<br>
+<br />
+<button mat-raised-button color="accent" [routerLink]="['/planAdd']">Add plan</button>
+<br>
+<br />
+<p *ngIf="!plans"><em>Loading...</em></p>
+
+
+<table mat-table [dataSource]="plans" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="teacherName">
+    <th mat-header-cell *matHeaderCellDef style="width:25%">Teacher Name</th>
+    <td mat-cell *matCellDef="let plan"> {{plan.teacherName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="studentName">
+    <th mat-header-cell *matHeaderCellDef style="width:25%">Student Name</th>
+    <td mat-cell *matCellDef="let plan"> {{plan.studentName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="lessonName">
+    <th mat-header-cell *matHeaderCellDef style="width:25%">Lesson Name</th>
+    <td mat-cell *matCellDef="let plan"> {{plan.lessonName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="done">
+    <th mat-header-cell *matHeaderCellDef style="width:25%">Done</th>
+    <td mat-cell *matCellDef="let plan"> {{plan.done}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef style="width:15%"></th>
+    <td mat-cell *matCellDef="let plan">
+      <section>
+        <div>
+          <button mat-icon-button color="primary" matTooltip="Edit">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" [routerLink]="['/planEdit', plan.id]" style="cursor:pointer">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Info">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" [routerLink]="['/planDetails', plan.id]" style="cursor:pointer">info</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Delete">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="deletePlan(plan)" style="cursor:pointer">delete</mat-icon>
+          </button>
+        </div>
+      </section>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay "></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay ;"></tr>
+</table>
